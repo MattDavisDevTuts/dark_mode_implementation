@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+/* Standard Body Styles */
+body {
+    /* Custom CSS Properties */
+    --accent-colour: #1f1f1f;
+    --background-colour: #e4e4e4;
+    --text-colour: #1f1f1f;
+    --button-text-colour: #e4e4e4;
+    --transition-delay: 1s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: sans-serif;
+    transition: var(--transition-delay);
+    overflow: hidden;
+
+    background-color: var(--background-colour);
+    color: var(--text-colour);
+}
+
+/* Body Styles Dark */
+body.dark {
+    /* Custom CSS Properties */
+    --accent-colour: #c0ff00;
+    --background-colour: #1f1f1f;
+    --text-colour: #c0ff00;
+    --button-text-colour: #1f1f1f;
+}
+
+.header { font-size: 6rem; }
+.sub-header { font-size: 3rem; }
+
+.theme-switch-button {
+    background-color: var(--accent-colour);
+    color: var(--button-text-colour);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 4rem;
+    border: none;
+    cursor: pointer;
+    padding: 2rem 4rem;
+    border-radius: 1.5rem;
+    outline: none;
+    transition: var(--transition-delay);
+    transform: scale(1);
+    backface-visibility: hidden;
+    font-family: inherit;
+}
+
+.theme-switch-button .icon {
+    margin-right: 1rem;
+    width: 5rem;
+    height: 5rem;
+}
+
+.theme-switch-button:hover {
+    transform: scale(1.05);
+}
+
+.sun-moon-container {
+    --rotation: 0;
+
+    position: absolute;
+    top: 0;
+    /* We use the vmin unit here because we want the height to be double the size of the smallest of the width and height */
+    height: 200vmin;
+    /* We set the pointer events property to none so the mouse can never interact with this container */
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(calc(var(--rotation) * 1deg));
+    transition: transform var(--transition-delay);
+}
+
+/* .dark .sun-moon-container {
+    --rotation: 180;
+} */
+
+.sun,
+.moon {
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    transition: all var(--transition-delay);
+    fill: var(--accent-colour);
+}
+
+.sun {
+    top: 5%;
+    opacity: 1;
+}
+
+.dark .sun {
+    opacity: 0;
+}
+
+.moon {
+    bottom: 5%;
+    opacity: 0;
+    transform: rotate(180deg);
+}
+
+.dark .moon {
+    opacity: 1;
+}
+
+.mt { margin-top: 4rem; }
